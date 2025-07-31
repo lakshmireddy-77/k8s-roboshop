@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb
+  # replica set lables
+  labels:
+    component: mongodb
+    project: roboshop
+    tier: database
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+        component: mongodb
+        project: roboshop
+        tier: database
+  # this is pod defination
+  template:
+    metadata:
+      labels:
+        component: mongodb
+        project: roboshop
+        tier: database
+    spec:
+      containers:
+        - name: mongodb
+          image: lakshmi315/mongodb:v1
